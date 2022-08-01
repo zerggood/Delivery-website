@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap')
+//var config//
+:root
+    --hue: 45
+    --sat: 98%
+    --first-color: hsl( var(--hue), var(--sat), 60%)
+    --first-color-light: hsl( var(--hue), var(--sat), 85%)
+    --first-color-lighten: hsl( var(--hue), var(--sat), 80%)
+    --first-color-alt: hsl( var(--hue), var(--sat), 53%)
+    --title-color: hsl( var(--hue), 4%, 15%)
+    --text-color: hsl( var(--hue), 4%, 35%)
+    --text-color-light: hsl( var(--hue), 4%, 65%)
+    --body-color: hsl( var(--hue), 0%, 100%)
+    --container-color: #fff
+    --scroll-bar-color: hsl( var(--hue), 4%, 85%)
+    --scroll-thumb-color: hsl( var(--hue), 4%, 75%)
+
+$header-height: 3rem
+
+$hue:  45
+$sat: 98%
+$first-color: hsl( $hue, $sat, 60%)
+$first-color-light: hsl( $hue, $sat, 85%)
+$first-color-lighten: hsl( $hue, $sat, 80%)
+$first-color-alt: hsl( $hue, $sat, 53%)
+$title-color: hsl( $hue, 4%, 15%)
+$text-color: hsl( $hue, 4%, 35%)
+$text-color-light: hsl( $hue, 4%, 65%)
+$body-color: hsl( $hue, 0%, 100%)
+$container-color: #fff
+$scroll-bar-color: hsl( $hue, 4%, 85%)
+$scroll-thumb-color: hsl( $hue, 4%, 75%)
+
+$body-font: 'Poppins', sans-serif
+$biggest-font-size: 2rem
+$h2-font-size: 1.25rem
+$h3-font-size: 1.125rem
+$normal-font-size: .938rem
+$small-font-size: .813rem
+$smaller-font-size: .75rem
+
+
+@media(min-width: 968px)
+    $biggest-font-size: 3rem
+    $h2-font-size: 1.75rem
+    $h3-font-size: 1.25rem
+    $normal-font-size: 1rem
+    $small-font-size: .875rem
+    $smaller-font-size: .813rem
+
+
+$font-semi-bold: 600
+$font-bold: 700
+
+$mb-0-5: .5rem
+$mb-0-75: .75rem
+$mb-1: 1rem
+$mb-1-5: 1.5rem
+$mb-2: 2rem
+
+$z-tooltip: 10
+$z-fixed: 100
+
+
+
+
+//html//
+*,::before,::after
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+html
+    scroll-behavior: smooth
+body
+    margin: $header-height 0 0 0
+    font-family: $body-font
+    font-size: $normal-font-size
+    background-color: var(--body-color)
+    color: var(--text-color)
+    transition: .5s
+
+body.dark-theme
+    --first-color-light: hsl(45, 98%, 75%)
+    --title-color: hsl( 45, 4%, 95%)
+    --text-color: hsl( 45, 4%, 80%)
+    --body-color: hsl( 45, 8%, 13%)
+    --container-color: hsl( 45, 8%, 16%)
+    --scroll-bar-color: hsl( 45, 4%, 32%)
+    --scroll-thumb-color: hsl( 45, 4%, 24%)
+
+h1,h2,h3
+    font-weight: $font-semi-bold
+    color: var(--title-color)
+    line-height: 1.5
+ul
+    list-style: none
+a
+    text-decoration: none
+img
+    max-width: 100%
+    height: auto
+//Layout//
+.section
+    padding: 4.5rem 0 1rem
+
+    &__title, &__title-center
+        font-size: $h2-font-size
+        color: var(--title-color)
+        text-align: center
+        margin-bottom: $mb-1
+.svg
+    &__color
+        fill: $first-color
+    &__blob
+        fill: var(--first-color-light)
+    &__img
+        width: 300px
+        justify-self: center
+
+
+.container
+    max-width: 968px
+    margin-left: $mb-1-5
+    margin-right: $mb-1-5
+
+.grid
+    display: grid
+    gap: 1.5rem
+//Button//
+.button
+    display: inline-block
+    background-color: $first-color
+    color: #1a1a1a
+    padding: .75rem 1.5rem
+    border-radius: 3rem
+    font-weight: $font-semi-bold
+    transition: .3s
+
+    &:hover
+        background-color: $first-color-alt
+
+    &__header
+        display: none
+    &-link
+        background: none
+        padding: 0
+        color: var(--title-color)
+
+        &:hover
+            background-color: transparent
+    &-flex
+        display: inline-flex
+        align-items: center
+        column-gap: .25rem
+        padding: .75rem 1rem
+    &__icon
+        font-size: 1.5rem
+
+//Header//
+.header
+    width: 100%
+    background-color: var(--body-color)
+    position: fixed
+    top: 0
+    left: 0
+    z-index: $z-fixed
+    transition: .5s
+
+.nav
+    height: $header-height
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    &__menu
+        @media(max-width: 767px)
+            position: fixed
+            background-color: var(--container-color)
+            box-shadow: 0 0 4px rgba(0, 0, 0, .1)
+            padding: 2.5rem 0
+            width: 90%
+            top: -100%
+            left: 0
+            right: 0
+            margin: 0 auto
+            transition: .4s
+            border-radius: 2rem
+            z-index: $z-fixed
+    &__list
+        display: flex
+        flex-direction: column
+        align-items: center
+        row-gap: 1.5rem
+    &__link, &__logo, &__toggle
+        color: var(--title-color)
+        font-weight: $font-semi-bold
+    &__toggle
+        font-size: 1.3rem
+        cursor: pointer
+//show-menu//
+.show-menu
+    top: calc( 3rem + 1rem )
+//home section//
+.home
+    &__container
+        row-gap: 3rem
+    &__title
+        font-size: $biggest-font-size
+        font-weight: $font-bold
+        margin-bottom: $mb-0-75
+    &__description
+        margin-bottom: $mb-2
+
+
+//about//
+.about
+    &__container
+        gap: 2.5rem
+    &__data
+        text-align: center
+//security//
+.security
+    &__container
+        gap: 2.5rem
+    &__data
+        text-align: center
+//services//
+.services
+    &__container
+        padding-top: 1rem
+    &__data
+        display: grid
+        row-gap: 1rem
+        background-color: var(--container-color)
+        box-shadow: 0 2px 6px hsla($hue, 100%, 20%, 0.30)
+        padding: 2rem 1.5rem
+        border-radius: 1rem
+        text-align: center
+    &__img
+        width: 135px
+        justify-self: center
+        margin-bottom: $mb-0-5
+//app//
+.app
+    &__container
+        gap: 2.5rem
+    &__data
+        text-align: center
+    &__description
+        margin-bottom: $mb-1-5
+    &__buttons
+        display: grid
+        grid-template-columns: repeat(2, max-content)
+        justify-content: center
+        gap: .5rem
+//contact//
+.contact
+    &__container
+        padding-bottom: 3rem
+    &__description
+        text-align: center
+    &__content
+        row-gap: .75rem
+        padding-bottom: 1.5rem
+    &__address
+        font-size: $small-font-size
+        font-weight: $font-semi-bold
+        color: var(--title-color)
+    &__information
+        font-weight: intial
+        color: var(--text-color)
+
+.footer
+    padding-bottom: 2rem
+
+    &__container
+        row-gap: 2rem
+    &__logo, &__title
+        font-size: $h3-font-size
+        margin-bottom: $mb-0-75
+    &__logo
+        display: inline-block
+        font-weight: $font-semi-bold
+        color: var(--title-color)
+    &__description, &__link
+        font-size: $small-font-size
+    &__links
+        display: grid
+        row-gap: .5rem
+    &__link
+        color: var(--title-color)
+    &__social
+        display: flex
+        column-gap: 1.5rem
+
+        &-link
+            font-size: 1.25rem
+            color: var(--title-color)
+    &__copy
+        margin-top: 6rem
+        text-align: center
+        font-size: $smaller-font-size
+        color: var(--text-color)
+
+.active-link
+    position: relative
+
+    &::before
+        content: ''
+        position: absolute
+        bottom: -.75rem
+        left: 45%
+        width: 5px
+        height: 5px
+        background-color: var(--title-color)
+        border-radius: 50%
+
+.scroll-header
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1)
+
+.scrollup
+    position: fixed
+    background-color: $first-color
+    right: 1rem
+    bottom: -20%
+    display: inline-flex
+    padding: .3rem
+    border-radius: .25rem
+    z-index: $z-tooltip
+    opacity: .8
+    transition: .4s
+
+    &:hover
+        background-color: $first-color
+        opacity: 1
+
+    &__icon
+        font-size: 1.25rem
+        color: var(--title-color)
+
+.show-scroll
+    bottom: 3rem
+
+::-webkit-scrollbar
+    width: .6rem
+    border-radius: .5rem
+    background-color: var(--scroll-bar-color)
+
+    &-thumb
+        background-color: var(--scroll-thumb-color)
+        border-radius: .5rem
+
+        &:hover
+            background-color: $text-color-light
+
+
+
+
+
+.change-theme
+    position: absolute
+    right: 1.5rem
+    top: 2.2rem
+    color: var(--title-color)
+    font-size: 1.8rem
+    cursor: pointer
+
+
+
+@media(max-width: 360px)
+    .svg__img
+        width: 100%
+    .section
+        padding: 3.5rem 0 1rem
+    
+    .services__img
+        width: 100px
+    
+    .app__button
+        grid-template-columns: max-content
+
+@media(min-width: 576px)
+    .svg__img
+        width: 100%
+    
+    .section__title-center
+        text-align: initial
+    .home__container, .about__container, .security__container, .services__container, .app__container, .contact__container, .footer__container
+        grid-template-columns: repeat(2, 1fr)
+    
+    .home__img
+        order: 1
+
+    .home__container, .about__container, .security__container, .app__container, .contact__container
+        align-items: center
+    
+    .about__data, .security__data , .app__data, .contact__description
+        text-align: initial
+    .about__img, .app__img
+        order: -1
+
+@media(min-width: 767px)
+    body
+        margin: 0
+    
+    .section
+        padding: 6rem 0 2rem
+    
+    .nav
+        height: calc(3rem + 1.5rem)
+
+        &__list
+            flex-direction: row
+            column-gap: 2.5rem
+        &__toggle
+            display: none
+    .change-theme
+        position: initial
+    .home__container
+        padding: 6rem 0 2rem
+    .app__button
+        justify-content: initial
+
+@media(min-width: 968px)
+    .button__header
+        display: block
+    
+    .svg__img
+        width: 470px
+    
+    .about__container, .security__container, .app__container, .contact__container
+        column-gap: 6rem
+    
+    .services__container
+        grid-template-columns: repeat(3, 1fr)
+    
+    .contact__container
+        grid-template-columns: 3fr 1.5fr 1.25fr
+
+    .footer
+        &__container
+            grid-template-columns: repeat(5, 1fr)
+        &__social
+            align-items: flex-start
+
+            &-link
+                font-size: 1.45rem
+
+@media(min-width: 1024px)
+    .container
+        margin-left: auto
+        margin-right: auto
+    .home
+        &__img
+            width: 540px
+        &__description
+            padding-right: 5rem
+    .footer__container
+        column-gap: 3rem
+    .scrollup
+        right: 2rem
+    
